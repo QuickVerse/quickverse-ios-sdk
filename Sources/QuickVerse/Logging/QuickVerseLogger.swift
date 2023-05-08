@@ -20,7 +20,7 @@ struct QuickVerseLogger {
             \(casesString)
         }
         
-        Example: QuickVerse.shared.stringFor(key: QVKey.\(localizations.last?.key.replacingOccurrences(of: ".", with: "_") ?? ""))
+        Example: QuickVerse.shared.stringFor(key: QVKey.\(localizations.last?.key.replacingOccurrences(of: " .,-", with: "", options: [.regularExpression]) ?? ""))
         
         ℹ️ℹ️ℹ️ DEBUG: END AVAILABLE LOCALIZATION KEYS ℹ️ℹ️ℹ️
         """
