@@ -38,12 +38,13 @@ pod 'QuickVerse', '~> 1.3.1' // Or pin to a specific version
 
 ### Carthage
 
-Add the following to your Cartfile:
+1. Add the following to your Cartfile:
 
 ```
 github "QuickVerse/quickverse-ios-sdk" // // Always use the latest version
 github "QuickVerse/quickverse-ios-sdk" ~> 1.3.1 // Or pin to a specific version
 ```
+2. In a terminal window, navigate to the directory of your `Cartfile`, and run `carthage update --use-xcframeworks`
 
 ## Usage
 
