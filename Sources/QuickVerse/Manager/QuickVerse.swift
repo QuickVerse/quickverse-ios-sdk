@@ -1,5 +1,8 @@
 import Foundation
 
+/// Convenience global accessor, allowing you to call methods with shorter footprint, for example: QV.getLocalizations(
+public let QV = QuickVerse.shared
+
 public class QuickVerse {
     private init() {}
     public static let shared = QuickVerse()
@@ -8,7 +11,7 @@ public class QuickVerse {
     public var isDebugEnabled: Bool = false
 
     private var localizations = [QuickVerseLocalization]()
-    private let sdkVersion = "1.3.0"
+    private let sdkVersion = "1.3.2"
 }
 
 // MARK: - Public Methods

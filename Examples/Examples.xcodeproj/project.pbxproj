@@ -51,6 +51,7 @@
 		755AF0832A002B5F0006233B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		755AF0862A002B5F0006233B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		75A155052A0529ED00F72AFD /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		75CB64DA2A0ABE4D004E0379 /* quickverse-ios-sdk */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "quickverse-ios-sdk"; path = ..; sourceTree = "<group>"; };
 		75D19C752A051FD3005B7A58 /* QVKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QVKey.swift; sourceTree = "<group>"; };
 		75D19C7B2A052808005B7A58 /* Lexend-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lexend-Regular.ttf"; sourceTree = "<group>"; };
 		75D19C7C2A052808005B7A58 /* Lexend-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lexend-Medium.ttf"; sourceTree = "<group>"; };
@@ -104,6 +105,7 @@
 		755AF0732A002B5D0006233B = {
 			isa = PBXGroup;
 			children = (
+				75CB64DA2A0ABE4D004E0379 /* quickverse-ios-sdk */,
 				75D19C792A0526CB005B7A58 /* Shared */,
 				752195B22A04F8C600F47BE7 /* UIKit-Example */,
 				755AF07E2A002B5D0006233B /* SwiftUI-Example */,
