@@ -1,4 +1,4 @@
-[![Version](https://img.shields.io/cocoapods/v/quickverse?style=flat)](https://cocoapods.org/pods/quickverse-ios-sdk)
+[![Version](https://img.shields.io/cocoapods/v/QuickVerse?style=flat)](#cocoapods)
 [![SwiftPM compatible](https://img.shields.io/badge/SwiftPM-compatible-success.svg?style=flat)](#Swift-Package-Manager)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-success.svg?style=flat)](#carthage)
 [![Twitter](https://img.shields.io/twitter/follow/quickverse_io?style=social)](https://twitter.com/quickverse.io)
@@ -28,18 +28,13 @@ The library should have been added to the Swift Package Dependencies section, an
 
 ### CocoaPods
 
-1. Add the following to your Podfile:
+1. Add the following to your Podfile. If you don't already have a Podfile, run `pod init` in your project's root directory:
 
 ```
-Podfile
 pod 'QuickVerse' // Always use the latest version
-pod 'QuickVerse', '~> 1.3.0' // Or pin to a specific version
+pod 'QuickVerse', '~> 1.3.1' // Or pin to a specific version
 ```
-2. In a terminal window, navigate to the directory of your `Podfile`, and run:
-
-```Swift
-pod install
-```
+2. In a terminal window, navigate to the directory of your `Podfile`, and run `pod install`
 
 ### Carthage
 
@@ -47,7 +42,7 @@ Add the following to your Cartfile:
 
 ```
 github "QuickVerse/quickverse-ios-sdk" // // Always use the latest version
-github "QuickVerse/quickverse-ios-sdk" ~> 1.3.0 // Or pin to a specific version
+github "QuickVerse/quickverse-ios-sdk" ~> 1.3.1 // Or pin to a specific version
 ```
 
 ## Usage
@@ -119,7 +114,7 @@ Missing logs? Make sure you're setting `QuickVerse.shared.isDebugEnabled = true`
 ## FAQs
 
 1. How big is your SDK? The final binary size of the QuickVerse iOS SDK is very small, just 0.2MB.
-2. How does your SDK handle limited connectivity? Our SDK requests all localizations on launch and caches them, so if there's limited connectivity later in the session, the localisations will still work.
+2. How does your SDK handle limited connectivity? Our SDK requests all localizations on launch and caches them, so if there's limited connectivity later in the session, the localizations will still work.
 3. What kind of data does the SDK collect and how is it used? The only data our SDK transmits off the device is: language keys for translations, SDK version, and device type.
 4. Can we request changes? Absolutely! Please share your requests with us at team@quickverse.io and we'll review and get back to you.
 
