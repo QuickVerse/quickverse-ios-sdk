@@ -93,7 +93,7 @@ If you enable `isDebugEnabled`, the SDK will print out a copy-able struct to the
 
 class QVKey {
     static let Onboarding_Demo_Body = "Onboarding.Demo.Body"
-	static let Onboarding_Demo_Title = "Onboarding.Demo.Title"
+    static let Onboarding_Demo_Title = "Onboarding.Demo.Title"
 }
 
 ```
