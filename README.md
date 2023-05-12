@@ -12,7 +12,11 @@ QuickVerse makes mobile & web app localization a breeze. Migrate your web and mo
     2. [Cocoapods](#cocoapods)
     3. [Carthage](#carthage)
 2. [Usage](#usage)
-3. [Logging & Troubleshooting](#Logging-&-Troubleshooting)
+    1. [Import the SDK](#1.-Import-the-SDK)
+    1. [Configure the SDK](#2.-Configure-the-SDK-on-app-launch)
+    2. [Retrieve your QuickVerse localizations](#3.-Retrieve-your-QuickVerse.io-localizations-from-our-servers)
+    3. [Access your localisations](#4.-Access-your-localized-strings)
+3. [Logging & roubleshooting](#Logging-&-Troubleshooting)
 5. [FAQs](#faqs)
 6. [Support](#support)
 
@@ -32,9 +36,9 @@ The library should have been added to the Swift Package Dependencies section, an
 
 ```
 pod 'QuickVerse' // Always use the latest version
-pod 'QuickVerse', '~> 1.3.1' // Or pin to a specific version
+pod 'QuickVerse', '~> 1.3.3' // Or pin to a specific version
 ```
-2. In a terminal window, navigate to the directory of your `Podfile`, and run `pod install`
+2. In a terminal window, navigate to the directory of your `Podfile`, and run `pod install --repo-update`
 
 ### Carthage
 
@@ -44,37 +48,45 @@ We recommend SPM for CocoaPods, but please contact us for integration guidance i
 
 QuickVerse is a very lightweight integration, requiring just a few lines of code.
 
-1. In files where you wish to use QuickVerse localizations, import the QuickVerse SDK you just installed.
-```Swift
+### 1. Import the SDK
+```swift
 import QuickVerse
 ```
-2. Configure the QuickVerse SDK in AppDelegate.swift. To do this, you need your APIKey, retrievable from your QuickVerse account [here](https://quickverse.io/project/default/applications).
-```Swift
-QuickVerse.shared.configure(apiKey: "{your-api-key}")
-QuickVerse.shared.isDebugEnabled = true // Optionally get detailed console logs
+
+### 2. Configure the SDK on app launch
+
+You'll need your APIKey, retrievable from your QuickVerse account [here](https://quickverse.io/project/default/applications).
+
+- For UIKit, place in `didFinishLaunchingWithOptions` in AppDelegate.swift
+- For SwiftUI, we recommend placing in the initialiser for your app, as shown [here](https://stackoverflow.com/a/62562934)
+```swift
+QuickVerse.configure(apiKey: "{your-api-key}")
+QuickVerse.isDebugEnabled = true // Optionally get detailed console logs
 ```
 
-3. Download the localizations, typically during your launch sequence.
-```Swift
-QuickVerse.shared.getLocalizations { [weak self] success in
-    // Continue into app
+### 3. Retrieve your QuickVerse.io localizations from our servers
+
+In most cases, you'll want to download the localizations during your launch sequence, before any copy is shown to the user.
+```swift
+QuickVerse.getLocalizations { [weak self] success in
+    // Continue into app or handle failure
 }
 ```
 _Note_: Keep an eye on the console. If you enable `isDebugEnabled`, the QuickVerse SDK will print out all available keys from your [quickverse.io](https://quickverse.io/project/default/localisations) account.
 
-4. Access your localized strings - from anywhere in your app.
-```Swift
-text = QuickVerse.shared.stringFor(key: "Onboarding_Demo_Title")
+### 4. Access your localized strings
+```swift
+text = QuickVerse.stringFor(key: "Onboarding_Demo_Title")
 ```
 
 Optionally provide a default value, should the key not exist in the local store.
-```Swift
-text = QuickVerse.shared.stringFor(key: "Onboarding_Demo_Title", defaultValue: "Welcome to QuickVerse")
+```swift
+text = QuickVerse.stringFor(key: "Onboarding_Demo_Title", defaultValue: "Welcome to QuickVerse")
 ```
 
 **_Recommended_**: Although you _can_ access the keys "inline", as showed above, we strongly recommend you store your keys in a single file for easy maintenance.
 If you enable `isDebugEnabled`, the SDK will print out a copy-able struct to the console, with all keys in your [quickverse.io](https://quickverse.io/project/default/localisations) account:
-```Swift
+```swift
 // QuickVerse: ℹ️ℹ️ℹ️ START AVAILABLE LOCALIZATION KEYS ℹ️ℹ️ℹ️
 
 // Paste this class in your code, and use it to access the QuickVerse values you have created in your quickverse.io account.
@@ -86,25 +98,26 @@ class QVKey {
 
 ```
 You can then access your localized strings without hardcoding keys:
-```Swift
-text = QuickVerse.shared.stringFor(key: QVKey.Onboarding_Demo_Body)
+```swift
+text = QuickVerse.stringFor(key: QVKey.Onboarding_Demo_Body)
 ```
 If you update this regularly, it will also help reduce bugs, for example if you were referencing a key that was later removed from quickverse.io.
+Note: if you have keys in your QuickVerse.io account that uses symbols iOS doesn't accept in variable names (any of: .,-), they'll be replaced with underscores when logged above (only the property names of course, the values will match the server value). 
 
 ## Logging & Troubleshooting
 
-All QuickVerse console logs start with "QuickVerse: " for easy filtering. We recommend setting `QuickVerse.shared.isDebugEnabled = true` during setup, and any time you're adding new keys.
+All QuickVerse console logs start with "QuickVerse: " for easy filtering. We recommend setting `QuickVerse.isDebugEnabled = true` during setup, and any time you're adding new keys.
 
 ### Informational Logs:
 - "START AVAILABLE LOCALIZATION KEYS" - logs an auto-generated struct of available keys for you to copy into your application.
 - "Retrieving localizations for language code" - informs you which language localizations will be fetched for. Useful for testing.
 
 ### Troubleshooting Logs:
-- "API Key not configured" - have you called `QuickVerse.shared.configure(apiKey: "{your-api-key}")` on app launch, before you try to fetch localizations?
+- "API Key not configured" - have you called `QuickVerse.configure(apiKey: "{your-api-key}")` on app launch, before you try to fetch localizations?
 - "API Key incorrect" - have you added your application to [quickverse.io](https://quickverse.io/project/default/applications), and are you using the correct APIKey for the current Bundle ID? QuickVerse APIkeys are specific to bundle IDs.
 - "No response received" / "Localizations empty" - have you added at least one localization to your [quickverse.io](https://quickverse.io/project/default/localisations) account?
 
-Missing logs? Make sure you're setting `QuickVerse.shared.isDebugEnabled = true` when you configure the SDK.
+Missing logs? Make sure you're setting `QuickVerse.isDebugEnabled = true` when you configure the SDK.
 
 ## FAQs
 

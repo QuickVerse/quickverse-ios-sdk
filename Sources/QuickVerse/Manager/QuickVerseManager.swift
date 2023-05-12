@@ -1,22 +1,22 @@
 import Foundation
 
-/// Convenience global accessor, allowing you to call methods with shorter footprint, for example: QV.getLocalizations(
-public let QV = QuickVerse.shared
+/// Convenience global accessor, allowing you to call QuickVerse methods with shorter footprint, for example: QuickVerse.getLocalizations(
+public let QuickVerse = QuickVerseManager.shared
 
-public class QuickVerse {
+public class QuickVerseManager {
     private init() {}
-    public static let shared = QuickVerse()
+    public static let shared = QuickVerseManager()
     
     private var apiKey: String!
     public var isDebugEnabled: Bool = false
 
     private var localizations = [QuickVerseLocalization]()
-    private let sdkVersion = "1.3.2"
+    private let sdkVersion = "1.3.3"
 }
 
 // MARK: - Public Methods
 
-extension QuickVerse {
+extension QuickVerseManager {
     /// Configures the SDK with the API key from your quickverse.io account. Must be called before you can use the SDK. We strongly recommend you call this on app initialisation, e.g. AppDelegate.
     public func configure(apiKey: String) {
         guard !apiKey.isEmpty else {
@@ -30,7 +30,7 @@ extension QuickVerse {
  Use these methods to fetch the localizations you have created on quickverse.io.
  You will typically want to call this on launch, before you display any copy.
  */
-extension QuickVerse {
+extension QuickVerseManager {
     /// Fetches your quickverse localizations for the user's device language setting. Unless you have a very specific use case, this is the method you'll want you use.
     public func getLocalizations(completion: @escaping (_ success: Bool) ->()) {
         let languageCode = retrieveDeviceLanguageCode()
@@ -46,7 +46,7 @@ extension QuickVerse {
 Use these methods to retrieve values for the localizations you fetched using one of the "get" methods above.
 You can call these from anywhere in your app, e.g. Quickverse.stringFor(key: "Onboarding.Welcome.Title")
 */
-extension QuickVerse {
+extension QuickVerseManager {
     /// Returns the value for a specific key, falling back to a default value
     public func stringFor(key: String, defaultValue: String) -> String {
         let value = stringFor(key: key)
@@ -62,7 +62,7 @@ extension QuickVerse {
 }
 
 // MARK: - Internal Methods
-extension QuickVerse {
+extension QuickVerseManager {
     private func getLocalizationsFor(languageCode: String, completion: @escaping (_ success: Bool) ->()) {
         guard let apiKey else {
             fatalError("🚨 API Key not configured. Please configure the SDK on your app startup (usually AppDelegate) with your API key from https://quickverse.io.")
@@ -76,7 +76,7 @@ extension QuickVerse {
         }
         let tokenEncoded = tokenData.base64EncodedString()
         
-        if QuickVerse.shared.isDebugEnabled {
+        if QuickVerseManager.shared.isDebugEnabled {
             QuickVerseLogger.logStatement("ℹ️ Retrieving localizations for language code: \(languageCode)")
         }
         
@@ -112,17 +112,17 @@ extension QuickVerse {
             if localizations.isEmpty {
                 QuickVerseLogger.logStatement("🚨 WARN: Localizations empty. Please add at least one localization entry to your account on quickverse.io.")
             }
-            if QuickVerse.shared.isDebugEnabled {
+            if QuickVerseManager.shared.isDebugEnabled {
                 QuickVerseLogger.printCodeForAvailableLocalizations(localizations)
             }
             
-            QuickVerse.shared.localizations = localizations
+            QuickVerseManager.shared.localizations = localizations
             return completion(true)
         }).resume()
     }
 }
 
-extension QuickVerse {
+extension QuickVerseManager {
     // You shouldn't need to access this, but we've left it open for specific use cases
     public func retrieveDeviceLanguageCode() -> String {
         var languageCode = Locale.preferredLanguages.first
@@ -147,7 +147,7 @@ extension QuickVerse {
     }
 }
 
-extension QuickVerse {
+extension QuickVerseManager {
     private func logStringKeyNotFound(_ key: String) {
         if localizations.isEmpty {
             QuickVerseLogger.logStatement("🚨 WARN: No localizations have been received. Have you added at least one localization to your quickverse account? If yes, did your fetchLocaliZations request succeed?")

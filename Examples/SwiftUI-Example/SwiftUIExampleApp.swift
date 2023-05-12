@@ -12,8 +12,8 @@ import QuickVerse
 struct SwiftUIExampleApp: App {
     init() {
         // Create an account on https://quickverse.io to generate an API key for your organisation/application
-        QuickVerse.shared.configure(apiKey: "")
-        QuickVerse.shared.isDebugEnabled = true
+        QuickVerse.configure(apiKey: "")
+        QuickVerse.isDebugEnabled = true
     }
     var body: some Scene {
         WindowGroup {

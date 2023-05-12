@@ -33,12 +33,12 @@ class ViewController: UIViewController {
 
 private extension ViewController {
     func getDeviceLanguageLocalizations() {
-        QuickVerse.shared.getLocalizations { [weak self] success in
+        QuickVerse.getLocalizations { [weak self] success in
             guard let self else { return }
             DispatchQueue.main.async {
                 if success {
                     self.updateLocalizedText()
-                    self.resultSourceLabel.text = "Using: System Language (\(QuickVerse.shared.retrieveDeviceLanguageCode().prefix(2)))"
+                    self.resultSourceLabel.text = "Using: System Language (\(QuickVerse.retrieveDeviceLanguageCode().prefix(2)))"
                 } else {
                     // Handle error
                 }
@@ -54,7 +54,7 @@ private extension ViewController {
             demoLanguageIndex += 1
         }
         
-        QuickVerse.shared.getSpecificLocalizations(languageCode: demoLanguageCode) { [weak self] success in
+        QuickVerse.getSpecificLocalizations(languageCode: demoLanguageCode) { [weak self] success in
             guard let self else { return }
             DispatchQueue.main.async {
                 if success {
@@ -68,9 +68,9 @@ private extension ViewController {
     }
     func updateLocalizedText() {
         // Strongly Recommended - Use a centrally-declared keys file, such as QVKey - seen here
-        self.onboardingTitleLabel.text = QuickVerse.shared.stringFor(key: QVKey.Onboarding_Demo_Title)
+        onboardingTitleLabel.text = QuickVerse.stringFor(key: QVKey.Onboarding_Demo_Title)
         // Alternatively, keys can be hardcoded "inline"
-        self.onboardingBodyLabel.text = QuickVerse.shared.stringFor(key: "Onboarding.Demo.Body")
+        onboardingBodyLabel.text = QuickVerse.stringFor(key: "Onboarding.Demo.Body")
     }
 }
 
