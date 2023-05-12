@@ -14,8 +14,8 @@ QuickVerse makes mobile & web app localization a breeze. Migrate your web and mo
 2. [Usage](#usage)
     1. [Import the SDK](#1-import-the-sdk)
     2. [Configure the SDK](#2-configure-the-sdk-on-app-launch)
-    3. [Retrieve your QuickVerse localizations](#3-retrieve-your-quickverseio-localizations-from-our-servers)
-    4. [Access your localisations](#4-access-your-localized-strings)
+    3. [Retrieve your QuickVerse localizations](#3-retrieve-your-quickverseio-localizations)
+    4. [Access your localizations](#4-access-your-localized-strings)
 3. [Logging & Troubleshooting](#logging--troubleshooting)
 5. [FAQs](#faqs)
 6. [Support](#support)
@@ -49,6 +49,7 @@ We recommend SPM for CocoaPods, but please contact us for integration guidance i
 QuickVerse is a very lightweight integration, requiring just a few lines of code.
 
 ### 1. Import the SDK
+
 ```swift
 import QuickVerse
 ```
@@ -64,9 +65,9 @@ QuickVerse.configure(apiKey: "{your-api-key}")
 QuickVerse.isDebugEnabled = true // Optionally get detailed console logs
 ```
 
-### 3. Retrieve your QuickVerse.io localizations from our servers
+### 3. Retrieve your QuickVerse.io localizations
 
-In most cases, you'll want to download the localizations during your launch sequence, before any copy is shown to the user.
+In most cases, you'll want to download the localizations during your launch sequence - before any copy is shown to the user.
 ```swift
 QuickVerse.getLocalizations { [weak self] success in
     // Continue into app or handle failure
@@ -75,6 +76,7 @@ QuickVerse.getLocalizations { [weak self] success in
 _Note_: Keep an eye on the console. If you enable `isDebugEnabled`, the QuickVerse SDK will print out all available keys from your [quickverse.io](https://quickverse.io/project/default/localisations) account.
 
 ### 4. Access your localized strings
+
 ```swift
 text = QuickVerse.stringFor(key: "Onboarding_Demo_Title")
 ```
@@ -121,11 +123,11 @@ Missing logs? Make sure you're setting `QuickVerse.isDebugEnabled = true` when y
 
 ## FAQs
 
-1. How big is your SDK? The final binary size of the QuickVerse iOS SDK is very small, just 0.2MB.
+1. How big is your SDK? The final binary size of the QuickVerse iOS SDK is very small, just 0.01MB, or 10kb!
 2. How does your SDK handle limited connectivity? Our SDK requests all localizations on launch and caches them, so if there's limited connectivity later in the session, the localizations will still work.
 3. What kind of data does the SDK collect and how is it used? The only data our SDK transmits off the device is: language keys for translations, SDK version, and device type.
 4. Can we request changes? Absolutely! Please share your requests with us at team@quickverse.io and we'll review and get back to you.
 
 ## Support
 
-Got a query or need support? We're always on hand to help with your integration & beyond. Just ping us at team@quickverse.io and we'll get back to you within the SLAs timeline associated with your QuickVerse plan.
+Got a query or need support? We're always on hand to help with your integration & beyond. Just ping us at team@quickverse.io and we'll get back to you within your QuickVerse plan's SLA.
