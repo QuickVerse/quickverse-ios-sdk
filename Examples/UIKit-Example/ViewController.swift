@@ -68,9 +68,12 @@ private extension ViewController {
     }
     func updateLocalizedText() {
         // Strongly Recommended - Use a centrally-declared keys file, such as QVKey - seen here
-        onboardingTitleLabel.text = QuickVerse.stringFor(key: QVKey.Onboarding_Demo_Title)
+        onboardingTitleLabel.text = QuickVerse.stringFor(key: QVKey.onboardingDemoTitle)
         // Alternatively, keys can be hardcoded "inline"
         onboardingBodyLabel.text = QuickVerse.stringFor(key: "Onboarding.Demo.Body")
+        
+        // Optionally provide a default value
+        onboardingTitleLabel.text = QuickVerse.stringFor(key: QVKey.onboardingDemoTitle, defaultValue: "Welcome to QuickVerse!")
     }
 }
 

@@ -13,8 +13,8 @@ class ContentViewModel: ObservableObject {
     private let demoLanguages = ["es", "it", "fr", "de", "en"]
     private var demoLanguageIndex = 0
     
-    @Published var titleText = String()
-    @Published var bodyText = String()
+    @Published var titleText: String?
+    @Published var bodyText: String?
     @Published var resultSourceText = String()
     
     func getDeviceLanguageLocalizations() {
@@ -46,8 +46,11 @@ class ContentViewModel: ObservableObject {
     }
     private func updateLocalizedText() {
         // Strongly Recommended - Use a centrally-declared keys file, such as QVKey - seen here
-        titleText = QuickVerse.stringFor(key: QVKey.Onboarding_Demo_Title, defaultValue: "Welcome to QuickVerse")
+        titleText = QuickVerse.stringFor(key: QVKey.onboardingDemoTitle)
         // Alternatively, keys can be hardcoded "inline"
-        bodyText = QuickVerse.stringFor(key: QVKey.Onboarding_Demo_Body, defaultValue: "")
+        bodyText = QuickVerse.stringFor(key: QVKey.onboardingDemoBody)
+        
+        // Optionally provide a default value
+        titleText = QuickVerse.stringFor(key: QVKey.onboardingDemoTitle, defaultValue: "Welcome to QuickVerse!")
     }
 }

@@ -36,7 +36,7 @@ The library should have been added to the Swift Package Dependencies section, an
 
 ```
 pod 'QuickVerse' // Always use the latest version
-pod 'QuickVerse', '~> 1.3.4' // Or pin to a specific version
+pod 'QuickVerse', '~> 1.4.0' // Or pin to a specific version
 ```
 2. In a terminal window, navigate to the directory of your `Podfile`, and run `pod install --repo-update`
 

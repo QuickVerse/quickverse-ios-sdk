@@ -16,10 +16,10 @@ struct ContentView: View {
         VStack() {
             Spacer()
             Spacer()
-            Text(viewModel.titleText)
+            Text(viewModel.titleText ?? "")
                 .font(Font(Fonts.lexendMedium(size: 20)))
                 .foregroundColor(Brand.Colors.darkGrey.color)
-            Text(viewModel.bodyText)
+            Text(viewModel.bodyText ?? "")
                 .font(Font(Fonts.lexendRegular(size: 14)))
                 .foregroundColor(Brand.Colors.lightGrey.color)
                 .multilineTextAlignment(.center)
