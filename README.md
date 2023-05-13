@@ -1,7 +1,7 @@
 [![Version](https://img.shields.io/cocoapods/v/QuickVerse?style=flat)](#cocoapods)
 [![SwiftPM compatible](https://img.shields.io/badge/SwiftPM-compatible-success.svg?style=flat)](#Swift-Package-Manager)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-success.svg?style=flat)](#carthage)
-[![Twitter](https://img.shields.io/twitter/follow/quickverse_io?style=social)](https://twitter.com/quickverse.io)
+[![Twitter](https://img.shields.io/twitter/follow/quickverse_io?style=social)](https://twitter.com/quickverse_io)
 
 # QuickVerse iOS SDK
 
