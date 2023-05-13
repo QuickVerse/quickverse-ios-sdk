@@ -78,30 +78,25 @@ _Note_: Keep an eye on the console. If you enable `isDebugEnabled`, the QuickVer
 ### 4. Access your localized strings
 
 ```swift
-text = QuickVerse.stringFor(key: "Onboarding_Demo_Title")
+yourlabel.text = QuickVerse.stringFor(key: "Onboarding_Demo_Title")
 ```
 
 Optionally provide a default value, should the key not exist in the local store.
 ```swift
-text = QuickVerse.stringFor(key: "Onboarding_Demo_Title", defaultValue: "Welcome to QuickVerse")
+yourlabel.text = QuickVerse.stringFor(key: "Onboarding_Demo_Title", defaultValue: "Welcome to QuickVerse")
 ```
 
 **_Recommended_**: Although you _can_ access the keys "inline", as showed above, we strongly recommend you store your keys in a single file for easy maintenance.
-If you enable `isDebugEnabled`, the SDK will print out a copy-able struct to the console, with all keys in your [quickverse.io](https://quickverse.io/project/default/localisations) account:
+If you enable `isDebugEnabled`, the SDK will print out a copy-able struct to the console, with all keys in your [quickverse.io](https://quickverse.io/project/default/localisations) account.
 ```swift
-// QuickVerse: ℹ️ℹ️ℹ️ START AVAILABLE LOCALIZATION KEYS ℹ️ℹ️ℹ️
-
-// Paste this class in your code, and use it to access the QuickVerse values you have created in your quickverse.io account.
-
 class QVKey {
-    static let Onboarding_Demo_Body = "Onboarding.Demo.Body"
-    static let Onboarding_Demo_Title = "Onboarding.Demo.Title"
+    static let onboardingDemoTitle = "Onboarding.Demo.Title"
+    static let onboardingDemoBody = "Onboarding.Demo.Body"
 }
-
 ```
 You can then access your localized strings without hardcoding keys:
 ```swift
-text = QuickVerse.stringFor(key: QVKey.Onboarding_Demo_Body)
+yourlabel.text = QuickVerse.stringFor(key: QVKey.onboardingDemoTitle)
 ```
 If you update this regularly, it will also help reduce bugs, for example if you were referencing a key that was later removed from quickverse.io.
 Note: if you have keys in your QuickVerse.io account that uses symbols iOS doesn't accept in variable names (any of: .,-), they'll be replaced with underscores when logged above (only the property names of course, the values will match the server value). 
