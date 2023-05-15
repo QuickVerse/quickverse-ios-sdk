@@ -1,8 +1,8 @@
-struct QuickVerseLogger {
-    static func logStatement(_ string: String) {
+struct LoggingManager {
+    static func log(_ string: String) {
         print("QuickVerse: \(string)")
     }
-    static func printCodeForAvailableLocalizations(_ localizations: [QuickVerseLocalization]) {
+    static func logCodeForAvailableLocalizations(_ localizations: [QuickVerseLocalization]) {
         var casesString = ""
         for (index, localization) in localizations.enumerated() {
             let propertyName = localization.key.replacingOccurrences(of: ".", with: "_")
@@ -20,10 +20,10 @@ struct QuickVerseLogger {
             \(casesString)
         }
         
-        Example: QuickVerse.shared.stringFor(key: QVKey.\(localizations.last?.key.replacingOccurrences(of: " .,-", with: "", options: [.regularExpression]) ?? ""))
+        Example: QuickVerse.stringFor(key: QVKey.\(localizations.last?.key.replacingOccurrences(of: " .,-", with: "", options: [.regularExpression]) ?? ""))
         
         ℹ️ℹ️ℹ️ DEBUG: END AVAILABLE LOCALIZATION KEYS ℹ️ℹ️ℹ️
         """
-        QuickVerseLogger.logStatement(logString)
+        LoggingManager.log(logString)
     }
 }

@@ -36,13 +36,13 @@ The library should have been added to the Swift Package Dependencies section, an
 
 ```
 pod 'QuickVerse' // Always use the latest version
-pod 'QuickVerse', '~> 1.4.0' // Or pin to a specific version
+pod 'QuickVerse', '~> 1.4.1' // Or pin to a specific version
 ```
 2. In a terminal window, navigate to the directory of your `Podfile`, and run `pod install --repo-update`
 
 ### Carthage
 
-We recommend SPM for CocoaPods, but please contact us for integration guidance if you wish to use Carthage.
+We recommend integrating with SPM or CocoaPods, but please contact us for integration guidance if you wish to use Carthage.
 
 ## Usage
 
