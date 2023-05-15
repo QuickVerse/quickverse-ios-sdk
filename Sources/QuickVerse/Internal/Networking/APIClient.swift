@@ -8,7 +8,7 @@ protocol API {
 
 class APIClient: API {
     var apiKey: String!
-    private let sdkVersion = "1.4.1"
+    private let sdkVersion = "1.4.2"
     
     private let session: URLSession
     init(session: URLSession) {

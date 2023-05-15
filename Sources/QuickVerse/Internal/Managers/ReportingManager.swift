@@ -56,7 +56,7 @@ extension ReportingManager {
         }
         var utilised: [[String: Any]] = [[:]]
         utilisedKeys.forEach { utilisedKey in
-            utilised.append(["key": utilisedKey.key, "count": utilisedKey.count])
+            utilised.append(["key": utilisedKey.key, "usage_count": utilisedKey.count])
         }
         let json: [String: Any] = ["missing_keys": missing, "utilised_keys": utilised]
         
