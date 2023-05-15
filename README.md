@@ -1,4 +1,4 @@
-[![Version](https://img.shields.io/cocoapods/v/QuickVerse?style=flat)](#cocoapods)
+[![Version](https://img.shields.io/static/v1?label=pod&message=1.4.1&color=blue&style=flat)](#cocoapods)
 [![SwiftPM compatible](https://img.shields.io/badge/SwiftPM-compatible-success.svg?style=flat)](#Swift-Package-Manager)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-success.svg?style=flat)](#carthage)
 [![Twitter](https://img.shields.io/twitter/follow/quickverse_io?style=social)](https://twitter.com/quickverse_io)
@@ -8,7 +8,7 @@
 QuickVerse makes mobile & web app localization a breeze. Migrate your web and mobile localizations to QuickVerse Cloud, and start managing them anytime, anywhere, collaboratively.
 
 1. [Installation](#installation)
-    1. [Swift Package Manager](#Swift-Package-Manager) 
+    1. [Swift Package Manager](#swift-package-manager) 
     2. [Cocoapods](#cocoapods)
     3. [Carthage](#carthage)
 2. [Usage](#usage)
