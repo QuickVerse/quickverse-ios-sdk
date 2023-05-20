@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "quickverse-ios-sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "git@github.com:QuickVerse/quickverse-ios-sdk.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "c0860e7b5301202df750738cea2a4c9811ed17c6"
+      }
+    }
+  ],
+  "version" : 2
+}
