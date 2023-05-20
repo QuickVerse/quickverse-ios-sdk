@@ -1,7 +1,8 @@
 import Foundation
 
-/// Convenience global accessor, allowing you to call QuickVerse methods with shorter footprint, for example: QuickVerse.getLocalizations(
+/// Convenience global accessors, allowing you to call QuickVerse methods with shorter footprint, for example: QuickVerse.getLocalizations(, or QV.getLocalizations(,
 public let QuickVerse = QuickVerseManager.shared
+public let QV = QuickVerseManager.shared
 
 public class QuickVerseManager {
     public static let shared = QuickVerseManager()
@@ -49,19 +50,18 @@ extension QuickVerseManager {
 
 /**
 Use these methods to retrieve values for the localizations you fetched using one of the "get" methods above.
-You can call these from anywhere in your app, e.g. Quickverse.stringFor(key: "Onboarding.Welcome.Title")
+You can call these from anywhere in your app, e.g. Quickverse.stringFor(key: "Onboarding.Demo.Title")
 */
 extension QuickVerseManager {
     /// Returns the value for a specific key, falling back to a default value
     public func stringFor(key: String, defaultValue: String) -> String {
-        let value = stringFor(key: key)
-        return value ?? defaultValue
+        logRequestedKey(key, defaultValue: defaultValue)
+        return getValueFor(key: key) ?? defaultValue
     }
     /// Returns the value for a specific key, or null if one does not exist
     public func stringFor(key: String) -> String? {
-        let value = localizations.first(where: { $0.key == key })?.value
-        logRequestedKey(key, defaultValue: "", wasPresent: value != nil)
-        return value
+        logRequestedKey(key, defaultValue: "")
+        return getValueFor(key: key)
     }
 }
 
@@ -109,6 +109,9 @@ private extension QuickVerseManager {
             }
         }
     }
+    func getValueFor(key: String) -> String? {
+        return localizations.first(where: { $0.key == key })?.value
+    }
 }
 
 extension QuickVerseManager {
@@ -127,16 +130,19 @@ extension QuickVerseManager {
 }
 
 private extension QuickVerseManager {
-    func logRequestedKey(_ key: String, defaultValue: String, wasPresent: Bool) {
-        if wasPresent {
+    func logRequestedKey(_ key: String, defaultValue: String) {
+        let isPresent = localizations.contains(where: { $0.key == key })
+        if isPresent {
             reportingManager.logUtilisedKey(key)
         } else {
             if localizations.isEmpty {
-                LoggingManager.log("🚨 WARN: No localizations have been received. Have you added at least one localization to your quickverse account? If yes, did your fetchLocaliZations request succeed?")
+                LoggingManager.log("🚨 WARN: No localizations have been received. Have you added at least one localization to your quickverse account? If yes, have you called fetchLocalizations( in your launch sequence?")
             } else {
                 LoggingManager.log("🚨 WARN: Value not found for referenced key: \(key). Please check this key exists in your quickverse.io account.")
             }
-            reportingManager.logMissingKey(key, defaultValue: defaultValue)
+            if localizationManager.successfulFetch {
+                reportingManager.logMissingKey(key, defaultValue: defaultValue)
+            }
         }
     }
 }

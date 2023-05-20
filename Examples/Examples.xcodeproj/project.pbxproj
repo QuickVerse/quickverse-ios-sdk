@@ -45,6 +45,7 @@
 		752195BC2A04F8C900F47BE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		752195BF2A04F8C900F47BE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		752195C12A04F8C900F47BE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		753FE1512A140CF500470029 /* quickverse-ios-sdk */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "quickverse-ios-sdk"; path = ..; sourceTree = "<group>"; };
 		755AF07C2A002B5D0006233B /* SwiftUI-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		755AF07F2A002B5D0006233B /* SwiftUIExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExampleApp.swift; sourceTree = "<group>"; };
 		755AF0812A002B5D0006233B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -104,6 +105,7 @@
 		755AF0732A002B5D0006233B = {
 			isa = PBXGroup;
 			children = (
+				753FE1512A140CF500470029 /* quickverse-ios-sdk */,
 				75D19C792A0526CB005B7A58 /* Shared */,
 				752195B22A04F8C600F47BE7 /* UIKit-Example */,
 				755AF07E2A002B5D0006233B /* SwiftUI-Example */,

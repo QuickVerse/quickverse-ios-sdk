@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = "QuickVerse"
-  spec.version      = "1.4.2"
+  spec.version      = "1.4.3"
   spec.summary      = "Effortlessly integrate your quickverse.io localisations into your iOS app, for instant, over-the-air updates & more."
   spec.description  = <<-DESC
   QuickVerse lets you translate your web and mobile apps with ease. Powered by instant, over-the-air updates, you can change your app copy anytime, anywhere.
