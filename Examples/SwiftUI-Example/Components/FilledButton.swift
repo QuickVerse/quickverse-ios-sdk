@@ -1,10 +1,3 @@
-//
-//  FilledButton.swift
-//  SwiftUI-Example
-//
-//  Created by Ed Beecroft on 06/05/2023.
-//
-
 import SwiftUI
 
 struct FilledButton: View {

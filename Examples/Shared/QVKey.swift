@@ -7,5 +7,6 @@ import Foundation
 
 class QVKey {
     static let onboardingDemoTitle = "Onboarding.Demo.Title"
+    static let onboardingDemoTitleWithUser = "Onboarding.Demo.TitleWithUser"
     static let onboardingDemoBody = "Onboarding.Demo.Body"
 }

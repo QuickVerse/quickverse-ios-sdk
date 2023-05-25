@@ -5,8 +5,7 @@ struct LoggingManager {
     static func logCodeForAvailableLocalizations(_ localizations: [QuickVerseLocalization]) {
         var casesString = ""
         for (index, localization) in localizations.enumerated() {
-            let propertyName = localization.key.replacingOccurrences(of: ".", with: "_")
-            casesString.append("static let \(propertyName) = \"\(localization.key)\"")
+            casesString.append("static let \(clean(key: localization.key)) = \"\(localization.key)\"")
             if index != localizations.count - 1 {
                 casesString.append("\n\t")
             }
@@ -20,10 +19,16 @@ struct LoggingManager {
             \(casesString)
         }
         
-        Example: QuickVerse.stringFor(key: QVKey.\(localizations.last?.key.replacingOccurrences(of: " .,-", with: "", options: [.regularExpression]) ?? ""))
+        Example: QuickVerse.stringFor(key: QVKey.\(clean(key: localizations.last?.key ?? "")))
         
         ℹ️ℹ️ℹ️ DEBUG: END AVAILABLE LOCALIZATION KEYS ℹ️ℹ️ℹ️
         """
         LoggingManager.log(logString)
+    }
+    // Removes characters from the key to provide a property name that Xcode will accept.
+    private static func clean(key: String) -> String {
+        return key
+            .replacingOccurrences(of: "[ ._,-]", with: "", options: .regularExpression)
+            .lowercasingFirstLetter()
     }
 }

@@ -1,6 +1,6 @@
 import Foundation
 
-/// Convenience global accessors, allowing you to call QuickVerse methods with shorter footprint, for example: QuickVerse.getLocalizations(, or QV.getLocalizations(,
+/// Compact global accessors, allowing you to call QuickVerse methods with shorter footprint, for example: QuickVerse.getLocalizations(, or QV.getLocalizations(
 public let QuickVerse = QuickVerseManager.shared
 public let QV = QuickVerseManager.shared
 
@@ -54,14 +54,14 @@ You can call these from anywhere in your app, e.g. Quickverse.stringFor(key: "On
 */
 extension QuickVerseManager {
     /// Returns the value for a specific key, falling back to a default value
-    public func stringFor(key: String, defaultValue: String) -> String {
+    public func stringFor(key: String, defaultValue: String, substitutions: [QVSubstitution]? = nil) -> String {
         logRequestedKey(key, defaultValue: defaultValue)
-        return getValueFor(key: key) ?? defaultValue
+        return getValueFor(key: key, substitutions: substitutions) ?? defaultValue
     }
     /// Returns the value for a specific key, or null if one does not exist
-    public func stringFor(key: String) -> String? {
+    public func stringFor(key: String, substitutions: [QVSubstitution]? = nil) -> String? {
         logRequestedKey(key, defaultValue: "")
-        return getValueFor(key: key)
+        return getValueFor(key: key, substitutions: substitutions)
     }
 }
 
@@ -109,8 +109,12 @@ private extension QuickVerseManager {
             }
         }
     }
-    func getValueFor(key: String) -> String? {
-        return localizations.first(where: { $0.key == key })?.value
+    func getValueFor(key: String, substitutions: [QVSubstitution]?) -> String? {
+        var value = localizations.first(where: { $0.key == key })?.value
+        substitutions?.forEach {
+            value = value?.replacingOccurrences(of: $0.replace, with: $0.with)
+        }
+        return value
     }
 }
 

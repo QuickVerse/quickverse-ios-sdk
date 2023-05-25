@@ -67,13 +67,23 @@ private extension ViewController {
         }
     }
     func updateLocalizedText() {
+        // Access values using the keys you declared in your quickverse.io account
+        onboardingTitleLabel.text = QuickVerse.stringFor(key: "Onboarding.Demo.Title")
+        
         // Strongly Recommended - Use a centrally-declared keys file, such as QVKey - seen here
         onboardingTitleLabel.text = QuickVerse.stringFor(key: QVKey.onboardingDemoTitle)
-        // Alternatively, keys can be hardcoded "inline"
-        onboardingBodyLabel.text = QuickVerse.stringFor(key: "Onboarding.Demo.Body")
+        
+        // Optionally use our compact accessor "QV"
+        onboardingTitleLabel.text = QV.stringFor(key: QVKey.onboardingDemoTitle)
         
         // Optionally provide a default value
-        onboardingTitleLabel.text = QuickVerse.stringFor(key: QVKey.onboardingDemoTitle, defaultValue: "Welcome to QuickVerse!")
+        onboardingTitleLabel.text = QV.stringFor(key: QVKey.onboardingDemoTitle, defaultValue: "Welcome to QuickVerse!")
+        
+        // Optionally provide a substitution
+        onboardingTitleLabel.text = QV.stringFor(key: QVKey.onboardingDemoTitleWithUser,
+                                                 substitutions: [QVSubstitution(replace: "%@", with: "Alice")])
+        
+        onboardingBodyLabel.text = QV.stringFor(key: QVKey.onboardingDemoBody)
     }
 }
 

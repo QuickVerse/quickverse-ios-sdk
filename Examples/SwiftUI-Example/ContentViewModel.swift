@@ -45,12 +45,22 @@ class ContentViewModel: ObservableObject {
         }
     }
     private func updateLocalizedText() {
+        // Access values using the keys you declared in your quickverse.io account
+        titleText = QuickVerse.stringFor(key: "Onboarding.Demo.Title")
+        
         // Strongly Recommended - Use a centrally-declared keys file, such as QVKey - seen here
         titleText = QuickVerse.stringFor(key: QVKey.onboardingDemoTitle)
-        // Alternatively, keys can be hardcoded "inline"
-        bodyText = QuickVerse.stringFor(key: QVKey.onboardingDemoBody)
+        
+        // Optionally use our compact accessor "QV"
+        titleText = QV.stringFor(key: QVKey.onboardingDemoTitle)
         
         // Optionally provide a default value
-        titleText = QuickVerse.stringFor(key: QVKey.onboardingDemoTitle, defaultValue: "Welcome to QuickVerse!")
+        titleText = QV.stringFor(key: QVKey.onboardingDemoTitle, defaultValue: "Welcome to QuickVerse!")
+        
+        // Optionally provide a substitution
+        titleText = QV.stringFor(key: QVKey.onboardingDemoTitleWithUser,
+                                 substitutions: [QVSubstitution(replace: "%@", with: "Alice")])
+        
+        bodyText = QV.stringFor(key: QVKey.onboardingDemoBody)
     }
 }
