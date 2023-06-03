@@ -10,7 +10,10 @@ class LocalizationManager {
 
 extension LocalizationManager {
     func getLocalizationsFor(languageCode: String, completion: @escaping (Result<QuickVerseResponse, APIError>) -> Void) {
-        guard let url = URL(string: RequestBuilder.buildLocalizationRequest(languageCode: languageCode)) else {
+        var languageCodesWithFallbacks = Locale.preferredLanguages
+        languageCodesWithFallbacks.removeAll(where: { $0 == languageCode })
+        languageCodesWithFallbacks.insert(languageCode, at: 0)
+        guard let url = URL(string: RequestBuilder.buildLocalizationRequest(languageCodes: languageCodesWithFallbacks)) else {
             return completion(.failure(.invalidURL))
         }
         let request = Request(url: url, httpMethod: .get, body: nil)
