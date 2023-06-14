@@ -71,13 +71,13 @@ extension ReportingManager {
             guard let self else { return }
             switch result {
             case .success:
-                missingKeys.removeAll()
-                utilisedKeys.removeAll()
+                self.missingKeys.removeAll()
+                self.utilisedKeys.removeAll()
             case .failure:
                 // Request failed, do not clear keys, retry on next
                 break
             }
-            requestInFlight = false
+            self.requestInFlight = false
         }
     }
 }

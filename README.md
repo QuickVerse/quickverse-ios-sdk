@@ -1,4 +1,4 @@
-[![Version](https://img.shields.io/static/v1?label=pod&message=1.4.5&color=blue&style=flat)](#cocoapods)
+[![Version](https://img.shields.io/static/v1?label=pod&message=1.4.6&color=blue&style=flat)](#cocoapods)
 [![SwiftPM compatible](https://img.shields.io/badge/SwiftPM-compatible-success.svg?style=flat)](#Swift-Package-Manager)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-success.svg?style=flat)](#carthage)
 [![Twitter](https://img.shields.io/twitter/follow/quickverse_io?style=social)](https://twitter.com/quickverse_io)
@@ -36,7 +36,7 @@ The library should have been added to the Swift Package Dependencies section, an
 
 ```
 pod 'QuickVerse' // Always use the latest version
-pod 'QuickVerse', '~> 1.4.5' // Or pin to a specific version
+pod 'QuickVerse', '~> 1.4.6' // Or pin to a specific version
 ```
 2. In a terminal window, navigate to the directory of your `Podfile`, and run `pod install --repo-update`
 
